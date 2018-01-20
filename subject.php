@@ -4,14 +4,6 @@ $adminId = $_SESSION["id"];
 include_once 'connect.php';
 include "header.php";
 
-if (isset($_POST['subject_name'])) {
-    $name = trim($_POST['subject_name']);
-    $year = trim($_POST['year']);
-    $sql = "INSERT INTO `subjects`(`id`, `name`, `rok`, `admin_id`)  VALUES (NULL, '" . $name . "', $year, $adminId)";
-    mysqli_query($con, $sql);
-}
-
-
 
 ?>
 
@@ -37,31 +29,8 @@ if (isset($_POST['subject_name'])) {
 </div>
 
 
-<div class="form-group text-center">
-    <form action="subject.php" method="post" enctype="multipart/data">
-        <label for="nazwa">Nazwa przedmiotu</label>
-        <input class="name" name="subject_name" type="text" placeholder="">
-        <button type="submit">Dodaj</button>
 
 </div>
-
-
-<div class="form-group text-center">
-    <label for="year">Rok przedmiotu</label>
-    <select name="year">
-        <?php
-        $sql="SELECT * FROM `rok`";
-        $result_set = mysqli_query($con, $sql );
-        while ($row = mysqli_fetch_array($result_set)) {
-            echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
-        }
-        ?>
-    </select>
-    </div>
-
-
-
-
 
 
 <div class="container text-center">
@@ -81,7 +50,7 @@ if (isset($_POST['subject_name'])) {
             $result_set = mysqli_query($con, $sql);
             while ($row = mysqli_fetch_array($result_set)) {
                 echo "<tr>";
-                echo "<td><a href=\"poziom1.php?p=".$row['id']."\" target=\"_blank\">" . $row['name'] . "</a></td>";
+                echo "<td><a href=\"sprawozdania.php?p=".$row['id']."\" target=\"_blank\">" . $row['name'] . "</a></td>";
                 echo "<td>" . $row['rok'] . "</td>";
                 echo "<td><a href='delete.php?did=" . $row['id'] . "'>Usuń przedmiot</a></td>";
                 echo "</tr>";
