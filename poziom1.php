@@ -1,12 +1,12 @@
 <?php
 session_start();
-$subjectId = $_SESSION["id"];
 $przedmiotId = $_GET['p'];
 
 
 include_once 'connect.php';
 include "header.php";
 
+var_dump($_POST);
 if (isset($_POST['subject_name'])) {
     $name = trim($_POST['subject_name']);
     $sql = "INSERT INTO `zadania`(`id`, `name`)  VALUES (NULL , '" . $name . "',)";
@@ -40,5 +40,3 @@ while ($row = mysqli_fetch_array($result_set)) {
     echo "</tr>";
 }
 ?>
-</table>
-</div>
