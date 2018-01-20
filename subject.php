@@ -46,7 +46,7 @@ include "header.php";
             <tbody>
 
             <?php
-            $sql = "SELECT `subjects`.`id`, `subjects`.`name`, `rok`.`name` AS `rok` FROM subjects LEFT JOIN `rok` ON (`subjects`.`rok` = `rok`.`id`)WHERE `admin_id` = $adminId ORDER BY `subjects`.`id` DESC"; //desc - malejąco wg id i pokazuje ostatnie dodane
+            $sql = "SELECT `subjects`.`id`, `subjects`.`name`,  `rok`.`name` AS `rok` FROM subjects LEFT JOIN `rok` ON (`subjects`.`rok` = `rok`.`id`)WHERE `admin_id` = $adminId ORDER BY `subjects`.`id` DESC"; //desc - malejąco wg id i pokazuje ostatnie dodane
             $result_set = mysqli_query($con, $sql);
             while ($row = mysqli_fetch_array($result_set)) {
                 echo "<tr>";
