@@ -32,7 +32,7 @@ $subjectName = $name['name'];
 </div>
 
 <?php
-$sql = "SELECT * FROM  ``zadania"; //desc - malejąco wg id i pokazuje ostatnie dodane
+$sql = "SELECT * FROM  `zadania`"; //desc - malejąco wg id i pokazuje ostatnie dodane
 $result_set = mysqli_query($con, $sql);
 while ($row = mysqli_fetch_array($result_set)) {
     echo "<tr>";

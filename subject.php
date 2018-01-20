@@ -10,8 +10,9 @@ if (isset($_POST['subject_name'])) {
     $sql = "INSERT INTO `subjects`(`id`, `name`, `rok`, `admin_id`)  VALUES (NULL, '" . $name . "', $year, $adminId)";
     mysqli_query($con, $sql);
 }
-$sql="SELECT * FROM `rok`";
-$result_set = mysqli_query($con, $sql );
+
+
+
 ?>
 
 <div class="masthead">
@@ -49,13 +50,18 @@ $result_set = mysqli_query($con, $sql );
     <label for="year">Rok przedmiotu</label>
     <select name="year">
         <?php
+        $sql="SELECT * FROM `rok`";
+        $result_set = mysqli_query($con, $sql );
         while ($row = mysqli_fetch_array($result_set)) {
             echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
         }
         ?>
     </select>
+    </div>
 
-</div>
+
+
+
 
 
 <div class="container text-center">
@@ -75,7 +81,7 @@ $result_set = mysqli_query($con, $sql );
             $result_set = mysqli_query($con, $sql);
             while ($row = mysqli_fetch_array($result_set)) {
                 echo "<tr>";
-                echo "<td><a href=\"sprawozdania.php?p=".$row['id']."\" target=\"_blank\">" . $row['name'] . "</a></td>";
+                echo "<td><a href=\"poziom1.php?p=".$row['id']."\" target=\"_blank\">" . $row['name'] . "</a></td>";
                 echo "<td>" . $row['rok'] . "</td>";
                 echo "<td><a href='delete.php?did=" . $row['id'] . "'>Usuń przedmiot</a></td>";
                 echo "</tr>";
